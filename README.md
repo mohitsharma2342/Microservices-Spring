@@ -49,10 +49,13 @@ Next Step 3
 
 Next 4
  and will add one more dependency in all pom to talk with cloud config server
-   <dependency>
+		  
+		   <dependency>
 			<groupId>org.springframework.cloud</groupId>
 			<artifactId>spring-cloud-starter-config</artifactId>
-		</dependency>
+		  </dependency>
+		
+		
 Next Step 5
  now to bootsrap the configuration we will add bootstrap.yml file in user and department
  by which microservecies will communicate with cloud config server                                                                                                
