@@ -1,12 +1,13 @@
 # Microservices-Spring
-All Microservices Repo with Cloud Config Server,Api Gateway
 
 
-Microservice :- 
-First create services
-and service registery
-then replaced port with service name
-
+1.Microservice Architecture 
+2.Service Registery(Netflix Eureka)
+3.Cloud Config Server
+4.Api-Gateway(Zuul)
+5.Circuit Breaker(hystrix)
+6.Hystrix DashBoard
+7.ZipKin
 
 Cloud Config Server :- 
 First we create User service and DEPARTMENT-SERVICE
@@ -21,9 +22,9 @@ in its main class we added below annotation
 
 @EnableConfigServer
 
-Next Step 2 we will create git repo 
-in that repo created one file application.yml
- and added Common configuration in file
+Next Step 2 we will create git repo                                                                                                                            
+in that repo created one file application.yml                                                                                                             
+ and added Common configuration in file                                                                                                                          
   eureka:
   instance:
     hostname: localhost
@@ -31,11 +32,11 @@ in that repo created one file application.yml
     register-with-eureka: true
     fetch-registry: true
     service-url:
-      default-zone: http://localhost:8761/eureka
+      default-zone: http://localhost:8761/eureka                                                                                                                  
 	  
 	 
 Next Step 3	 
-	to get the info from git repo we will do the configuration in cloud config microservice 
+	to get the info from git repo we will do the configuration in cloud config microservice                                                                  
 	spring:
   application:
     name: CONFIG-SERVER
@@ -54,7 +55,7 @@ Next 4
 		</dependency>
 Next Step 5
  now to bootsrap the configuration we will add bootstrap.yml file in user and department
- by which microservecies will communicate with cloud config server
+ by which microservecies will communicate with cloud config server                                                                                                
  spring:
   cloud:
     config:
@@ -62,9 +63,6 @@ Next Step 5
       uri: http://localhost:9001
 	  
 next step 6 we will remove the common service registeration configuration from all microservices
-
-
-
 
 
 Api Gatway :- 
