@@ -1,13 +1,14 @@
 # Microservices-Spring
 
 
-1.Microservice Architecture 
-2.Service Registery(Netflix Eureka)
-3.Cloud Config Server
-4.Api-Gateway(Zuul)
-5.Circuit Breaker(hystrix)
-6.Hystrix DashBoard
-7.ZipKin
+1.Microservice Architecture                                                                                                                                     
+2.Service Registery(Netflix Eureka)                                                                                                                             
+3.Cloud Config Server                                                                                                                                           
+4.Api-Gateway(Zuul)                                                                                                                                             
+5.Circuit Breaker(hystrix)                                                                                                                                       
+6.Hystrix DashBoard                                                                                                                                             
+7.ZipKin                                                                                                                                                         
+
 
 Cloud Config Server :- 
 First we create User service and DEPARTMENT-SERVICE
