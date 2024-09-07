@@ -145,3 +145,72 @@ Zipkin pending
 
 Micro service design pattern 
 https://www.linkedin.com/posts/hinaaroraa_microservicepdf-activity-7223182895543152641-W2hh?utm_source=share&utm_medium=member_android
+
+**Saga design pattern**
+
+This pattern is used to manage and maintain data consistency across multiple microservices
+It is responsible for managing the overall transaction and coordinating the compensating actions required in case of any failures. It is useful when dealing with complex business processes that involve multiple services, such as order processing, shipping, and billing. 
+
+**Circuit Breaker Pattern**
+Circuit Breaker pattern in microservices is a fault-tolerance mechanism that monitors and controls interactions between services
+Main purpose is stop the request and response process if a service is not working, as the name suggests.
+
+**1. Closed State**
+In the Closed state, the circuit breaker operates normally, allowing requests to flow through between services.
+During this phase, the circuit breaker monitors the health of the downstream service by collecting and analyzing metrics such as response times, error rates, or timeouts.
+If the monitored metrics remain within acceptable thresholds, indicating that the downstream service is healthy, the circuit breaker stays in the Closed state and continues to forward requests.
+**2. Open State**
+When the monitored metrics breach predetermined thresholds, signaling potential issues with the downstream service, the circuit breaker transitions to the Open state.
+In the Open state, the circuit breaker immediately stops forwarding requests to the failing service, effectively isolating it.
+Instead of allowing requests to reach the failing service and potentially exacerbate the issue, the circuit breaker provides a predefined fallback response or an error message to the caller.
+This helps prevent cascading failures and maintains system stability by ensuring that clients receive timely feedback, even when services encounter issues.
+**3. Half-Open State**
+After a specified timeout period in the Open state, transitions to Half-Open state.
+Allows a limited number of trial requests to pass through to the downstream service.
+Monitors responses to determine service recovery.
+If trial requests succeed, indicating service recovery, transitions back to Closed state.
+If trial requests fail, service issues persist.
+May transition back to Open state or remain in Half-Open state for further evaluation.
+https://www.geeksforgeeks.org/what-is-circuit-breaker-pattern-in-microservices/
+
+**API gateway**
+An API gateway is an API management tool . The API Gateway is a server. that sits between a client and a collection of backend services.
+which will be a single entry point into a system.
+Which is responsible for request routing, composition, and protocol translation.
+All the requests made by the client go through the API Gateway. After that, the API Gateway routes requests to the appropriate microservice
+It also has other responsibilities such as authentication, monitoring, load balancing, caching, request shaping and management, and static response handling.
+
+**Load Balancer**
+
+Load balancing refers to efficiently distributing the incoming network traffic 
+across a group of backend servers (multiple instances of the service).In
+
+Server side load balancing is distributing the incoming requests towards multiple instances of the service.
+
+Client side load balancing is distributing the outgoing request from the client itself.
+
+
+**1. Server-side Load Balancing**
+In Server-side load balancing, the instances of the service are deployed on multiple servers and then a load balancer is put in front of them. It is generally a hardware load balancer. All the incoming requests traffic firstly comes to this load balancer acting as a middle component. It then decides to which server a particular request must be directed to based on some algorithm.
+
+Server side load balancing
+
+Disadvantages of Server-side load balancing
+Server side load balancer acts as a single point of failure as if it fails, all the instances of the microservice becomes inaccessible as only load balancer has the list of servers.
+
+Since each microservice will have a separate load balancer, the overall complexity of the system increases and it becomes hard to manage.
+
+The network latency increases as the number of hops for the request increases from one to two with the load balancer, one to the load balancer and then another from load balancer to the microservice.
+
+**2. Client-side Load Balancing**
+The instances of the service are deployed on multiple servers. 
+Load balancer's logic is part of the client itself,
+ it holds the list of servers and decides to which server a particular request must be directed .
+
+Spring client side load balancing
+Spring Netflix Eureka has a built-in client side load balancer called Ribbon.
+Ribbon can automatically be configured by registering RestTemplate as a bean and annotating it with @LoadBalanced.
+In this example we will focus on how to access a microservice instance transparently using RestTemplate and @LoadBalance.
+
+
+
